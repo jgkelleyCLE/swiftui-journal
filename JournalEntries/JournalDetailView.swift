@@ -24,11 +24,14 @@ struct JournalDetailView: View {
                     Text(journalEntry.date, style: .date)
                         .bold()
                     Text(" - ")
-                    Text(String(repeating: "⭐️", count: journalEntry.rating))
+                    Text(String(repeating: "⭐️", count: Int(journalEntry.rating)))
                     Spacer()
                 }.padding([.bottom], 10)
                 
-                Text("\(journalEntry.text)")
+                HStack {
+                    Text("\(journalEntry.text)")
+                    Spacer()
+                }
                 
                             }.navigationTitle("\(journalEntry.title)")
                 .padding()

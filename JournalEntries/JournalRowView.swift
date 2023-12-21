@@ -15,14 +15,27 @@ struct JournalRowView: View {
         VStack {
             HStack {
                 Text("\(journalEntry.title)")
-                Text(String(repeating: "⭐️", count: journalEntry.rating))
-                    .font(.caption2)
+                    .bold()
+                    .lineLimit(1)
+                Spacer()
+                Text( "\(journalEntry.text)" )
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+                
                 Spacer()
             }
-            Text( "\(journalEntry.text)" )
-                .font(.caption)
-                .lineLimit(1)
-                .truncationMode(.tail)
+            HStack {
+                Text(journalEntry.date, style: .date)
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+                Spacer()
+                Text(String(repeating: "⭐️", count: Int(journalEntry.rating)))
+                    .font(.caption2)
+                
+            }
+            
         }
         
         
